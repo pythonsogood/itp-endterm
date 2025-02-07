@@ -2,8 +2,8 @@ import pydantic
 
 
 class Student(pydantic.BaseModel):
-	name: str
 	student_id: int
+	name: str
 	age: int
 	grades: dict[str, list[int]]
 
