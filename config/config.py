@@ -23,7 +23,7 @@ class Config():
 		self._file_path = value
 
 	@property
-	def school(self) -> School | None:
+	def school(self) -> School:
 		return self._school
 
 	def read(self):
