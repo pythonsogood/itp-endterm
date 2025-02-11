@@ -24,6 +24,8 @@ class Config():
 
 	@property
 	def school(self) -> School:
+		if self._school is None:
+			raise ValueError("Config is not initialized!")
 		return self._school
 
 	def read(self):
