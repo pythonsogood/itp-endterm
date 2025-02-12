@@ -5,8 +5,8 @@ sys.path.append(os.path.abspath(".."))
 
 
 __all__ = (
-    "Config",
-    "School",
+	"Config",
+	"School",
 )
 
 

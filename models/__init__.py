@@ -5,9 +5,9 @@ sys.path.append(os.path.abspath(".."))
 
 
 __all__ = (
-    "Course",
-    "GraduateStudent",
-    "Student",
+	"Course",
+	"GraduateStudent",
+	"Student",
 )
 
 

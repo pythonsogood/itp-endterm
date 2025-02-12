@@ -5,10 +5,10 @@ sys.path.append(os.path.abspath(".."))
 
 
 __all__ = (
-    "ConfigRoute",
-    "CourseRoute",
-    "ReportRoute",
-    "StudentRoute",
+	"ConfigRoute",
+	"CourseRoute",
+	"ReportRoute",
+	"StudentRoute",
 )
 
 
