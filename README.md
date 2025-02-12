@@ -78,7 +78,7 @@ Reports routes are:
 
 - [x] [Student](/models/student.py#L4)
 - [x] [Course](/models/course.py)
-- [x] [School](/config/school.py#L6)
+- [x] [School](/config/school.py)
 - [x] [GraduateStudent (Inheritance)](/models/student.py#L26)
 
 ### Improved Functionality Section
