@@ -7,8 +7,7 @@
         "age": 3,
         "grades": {
           "1": [
-            0,
-            2
+            0
           ]
         }
       },
@@ -17,12 +16,25 @@
         "name": "string",
         "age": 13,
         "grades": {}
+      },
+      "3": {
+        "student_id": 3,
+        "name": "asdasd",
+        "age": 17,
+        "grades": {}
       }
     },
     "courses": {
       "1": {
         "course_code": 1,
         "course_name": "math",
+        "enrolled_students": [
+          1
+        ]
+      },
+      "11": {
+        "course_code": 11,
+        "course_name": "asd",
         "enrolled_students": [
           1
         ]

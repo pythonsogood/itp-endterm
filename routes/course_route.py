@@ -55,7 +55,7 @@ class CourseRoute(AbstractRoute):
 
 		return JSONResponse(course.model_dump(), status.HTTP_200_OK)
 
-	async def courses_enroll_student(self, request: Request, course_id: Annotated[int, Path(title="Course ID")], student_id: Annotated[str, Body(title="Student ID", embed=True)]) -> JSONResponse:
+	async def courses_enroll_student(self, request: Request, course_id: Annotated[int, Path(title="Course ID")], student_id: Annotated[int, Body(title="Student ID", embed=True)]) -> JSONResponse:
 		course = self.get_course(course_id)
 		student = self.get_student(student_id)
 
@@ -68,7 +68,7 @@ class CourseRoute(AbstractRoute):
 
 		return JSONResponse(course.model_dump(), status.HTTP_200_OK)
 
-	async def courses_delete_student(self, request: Request, course_id: Annotated[int, Path(title="Course ID")], student_id: Annotated[str, Body(title="Student ID", embed=True)]) -> JSONResponse:
+	async def courses_delete_student(self, request: Request, course_id: Annotated[int, Path(title="Course ID")], student_id: Annotated[int, Body(title="Student ID", embed=True)]) -> JSONResponse:
 		course = self.get_course(course_id)
 		student = self.get_student(student_id)
 
