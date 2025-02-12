@@ -71,3 +71,27 @@ Reports routes are:
 ## Dependencies
 
 * Can be found in [pyproject.toml](/pyproject.toml)
+
+## Project criteria checklist
+
+### Core Classes and Attributes
+
+- [x] [Student](/models/student.py)
+- [x] [Course](/models/course.py)
+- [x] [School](/config/school.py)
+- [x] [GraduateStudent (Inheritance)](/models/student.py)
+
+### Improved Functionality Section
+- [x] [Student Management](/routes/student_route.py)
+- [x] [Course Enrollment and Management](/routes/course_route.py)
+- [x] [Search](/routes/student_route.py) and [Reporting](/routes/report_route.py)
+- [x] [User Data Persistence](/config/config.py)
+- [x] [Error Handling](/util/errors.py)
+- [ ] [Extensibility via Inheritance](/models/student.py) (?)
+
+### Improved User Scenario Section
+- [x] [Student Enrollment and Record Management](/routes/student_route.py)
+- [x] [Course Registration and Enrollment](/routes/course_route.py)
+- [x] [Grade Input](/routes/student_route.py) and [Analysis](/routes/report_route.py)
+- [x] [Search and Retrieval](/routes/student_route.py)
+- [x] [Reporting and Analytics](/routes/report_route.py)
