@@ -11,6 +11,12 @@
             2
           ]
         }
+      },
+      "2": {
+        "student_id": 2,
+        "name": "string",
+        "age": 13,
+        "grades": {}
       }
     },
     "courses": {

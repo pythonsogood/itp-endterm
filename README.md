@@ -51,6 +51,9 @@ run `main.py`
 python main.py
 ```
 
+Server opens on http://localhost:8000
+API Endpoints can be checked via [Swagger-UI](https://github.com/swagger-api/swagger-ui) on [/docs](http://localhost:8000/docs)
+
 ## Requirements
 
 * OS: Windows 10 or greater
