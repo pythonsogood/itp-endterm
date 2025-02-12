@@ -10,3 +10,8 @@ class RequestException(HTTPException):
 class NotFoundException(RequestException):
 	def __init__(self, message: str):
 		super().__init__(message, status_codes.HTTP_404_NOT_FOUND)
+
+
+class AlreadyExistsException(RequestException):
+	def __init__(self, message: str):
+		super().__init__(message, status_codes.HTTP_400_BAD_REQUEST)

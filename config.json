@@ -1,1 +1,19 @@
-{}
+{
+  "school": {
+    "students": {
+      "1": {
+        "student_id": 1,
+        "name": "Ivan",
+        "age": 3,
+        "grades": {        }
+      }
+    },
+    "courses": {
+      "1": {
+        "course_code": 1,
+        "course_name": "math",
+        "enrolled_students": []
+      }
+    }
+  }
+}

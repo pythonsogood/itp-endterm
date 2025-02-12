@@ -5,6 +5,9 @@ import fastapi
 from fastapi.datastructures import Default
 
 from config import Config
+from errors import NotFoundException
+from models.course import Course
+from models.student import Student
 
 
 @dataclass()
@@ -58,3 +61,21 @@ class AbstractRoute():
 	@routes.setter
 	def routes(self, value: Sequence[Route]):
 		self._routes = value
+
+	def get_course(self, course_id: int) -> Course:
+		school = self.config.school
+
+		course = school.courses.get(course_id)
+		if course is None:
+			raise NotFoundException(f"Course {course_id} not found")
+
+		return course
+
+	def get_student(self, student_id: int) -> Student:
+		school = self.config.school
+
+		student = school.students.get(student_id)
+		if student is None:
+			raise NotFoundException(f"Student {student_id} not found")
+
+		return student

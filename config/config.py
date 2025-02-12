@@ -29,13 +29,23 @@ class Config():
 		return self._school
 
 	def read(self):
-		with open(self._file_path, "rb") as f:
-			self._config = orjson.loads(f.read())
-		self._school = School(**self._config)
+		if os.path.exists(self._file_path):
+			with open(self._file_path, "rb") as f:
+				try:
+					self._config = orjson.loads(f.read())
+				except orjson.JSONDecodeError as e:
+					print(f"JSON Decode error: {e.args}")
+					self._config = {}
+		else:
+			self._config = {}
+
+		self._school = School(**self._config.get("school", {}))
 
 	def reload(self):
 		self.read()
 
 	def save(self):
+		self._config["school"] = self.school.model_dump(mode="json")
+
 		with open(self._file_path, "wb") as f:
 			f.write(orjson.dumps(self._config, option=orjson.OPT_INDENT_2))

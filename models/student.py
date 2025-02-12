@@ -5,7 +5,7 @@ class Student(pydantic.BaseModel):
 	student_id: int
 	name: str
 	age: int
-	grades: dict[str, list[int]]
+	grades: dict[int, list[int]]
 
 
 class GraduateStudent(Student):
