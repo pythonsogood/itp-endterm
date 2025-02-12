@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 
 from errors import AlreadyExistsException, NotFoundException
 from models.course import Course
-from .base_route import AbstractRoute, Route
+from .base_route import AbstractRoute, APIRoute
 
 
 class CoursePutModel(pydantic.BaseModel):
@@ -25,14 +25,14 @@ class CourseDeleteStudentModel(pydantic.BaseModel):
 
 class CourseRoute(AbstractRoute):
 	def init(self) -> None:
-		self.base_path = "/course"
+		self.base_path = "/api/course"
 		self.routes = (
-			Route(f"{self.base_path}/", self.courses_list, methods=("GET",)),
-			Route(f"{self.base_path}/{"{course_id}"}", self.courses_get, methods=("GET",)),
-			Route(f"{self.base_path}/{"{course_id}"}", self.courses_put, methods=("PUT",)),
-			Route(f"{self.base_path}/{"{course_id}"}", self.courses_patch, methods=("PATCH",)),
-			Route(f"{self.base_path}/{"{course_id}"}/enroll_student", self.courses_enroll_student, methods=("PUT",)),
-			Route(f"{self.base_path}/{"{course_id}"}/enroll_student", self.courses_delete_student, methods=("DELETE",)),
+			APIRoute(f"{self.base_path}/", self.courses_list, methods=("GET",)),
+			APIRoute(f"{self.base_path}/{"{course_id}"}", self.courses_get, methods=("GET",)),
+			APIRoute(f"{self.base_path}/{"{course_id}"}", self.courses_put, methods=("PUT",)),
+			APIRoute(f"{self.base_path}/{"{course_id}"}", self.courses_patch, methods=("PATCH",)),
+			APIRoute(f"{self.base_path}/{"{course_id}"}/enroll_student", self.courses_enroll_student, methods=("PUT",)),
+			APIRoute(f"{self.base_path}/{"{course_id}"}/enroll_student", self.courses_delete_student, methods=("DELETE",)),
 		)
 
 	async def courses_list(self, request: Request) -> JSONResponse:

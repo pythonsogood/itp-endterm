@@ -1,10 +1,11 @@
 import pydantic
+import rapidfuzz
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
 
 from errors import AlreadyExistsException, NotFoundException
 from models.student import Student
-from .base_route import AbstractRoute, Route
+from .base_route import AbstractRoute, APIRoute
 
 
 class StudentPutModel(pydantic.BaseModel):
@@ -18,25 +19,35 @@ class StudentPatchModel(pydantic.BaseModel):
 
 
 class StudentGradesPatchModel(pydantic.BaseModel):
-	course: str
+	course: int
 	grades: list[int] = pydantic.Field(default_factory=list)
 
 
 class StudentRoute(AbstractRoute):
 	def init(self) -> None:
-		self.base_path = "/student"
+		self.base_path = "/api/student"
 		self.routes = (
-			Route(f"{self.base_path}/", self.students_list, methods=("GET",)),
-			Route(f"{self.base_path}/{"{student_id}"}", self.students_get, methods=("GET",)),
-			Route(f"{self.base_path}/{"{student_id}"}", self.students_put, methods=("PUT",)),
-			Route(f"{self.base_path}/{"{student_id}"}", self.students_patch, methods=("PATCH",)),
-			Route(f"{self.base_path}/{"{student_id}/grades"}", self.students_grades_patch, methods=("PATCH",)),
+			APIRoute(f"{self.base_path}/", self.students_list, methods=("GET",)),
+			APIRoute(f"{self.base_path}/search", self.students_search, methods=("GET",)),
+			APIRoute(f"{self.base_path}/{"{student_id}"}", self.students_get, methods=("GET",)),
+			APIRoute(f"{self.base_path}/{"{student_id}"}", self.students_put, methods=("PUT",)),
+			APIRoute(f"{self.base_path}/{"{student_id}"}", self.students_patch, methods=("PATCH",)),
+			APIRoute(f"{self.base_path}/{"{student_id}/grades"}", self.students_grades_patch, methods=("PATCH",)),
 		)
 
 	async def students_list(self, request: Request) -> JSONResponse:
 		school = self.config.school
 
 		students = [student.model_dump() for student in school.students.values()]
+
+		return JSONResponse({"students": students}, status.HTTP_200_OK)
+
+	async def students_search(self, request: Request, name: str) -> JSONResponse:
+		school = self.config.school
+
+		student_names = [fuzz[0] for fuzz in rapidfuzz.process.extract(name, choices=[student.name for student in school.students.values()], scorer=rapidfuzz.fuzz.partial_token_set_ratio, score_cutoff=30)]
+
+		students = [student.model_dump() for student in school.students.values() if student.name in student_names]
 
 		return JSONResponse({"students": students}, status.HTTP_200_OK)
 
@@ -73,7 +84,7 @@ class StudentRoute(AbstractRoute):
 		course = self.get_course(student_grades_patch_model.course)
 
 		if student.student_id not in course.enrolled_students:
-			raise NotFoundException(f"Student is not enrolled in course {course}")
+			raise NotFoundException(f"Student is not enrolled in course {course.course_code}")
 
 		if student_grades_patch_model.course not in student.grades:
 			student.grades[course.course_code] = []

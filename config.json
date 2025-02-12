@@ -5,14 +5,21 @@
         "student_id": 1,
         "name": "Ivan",
         "age": 3,
-        "grades": {        }
+        "grades": {
+          "1": [
+            0,
+            2
+          ]
+        }
       }
     },
     "courses": {
       "1": {
         "course_code": 1,
         "course_name": "math",
-        "enrolled_students": []
+        "enrolled_students": [
+          1
+        ]
       }
     }
   }

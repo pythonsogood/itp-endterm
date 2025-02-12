@@ -26,3 +26,6 @@ class School(pydantic.BaseModel):
 		if course_code not in self.courses:
 			raise ValueError(f"Course with code {course_code} does not exist")
 		del self.courses[course_code]
+
+	def get_student_courses(self, student_id: int) -> list[Course]:
+		return [course for course in self.courses.values() if student_id in course.enrolled_students]

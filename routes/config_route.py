@@ -1,13 +1,13 @@
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
-from .base_route import AbstractRoute, Route
+from .base_route import AbstractRoute, APIRoute
 
 
 class ConfigRoute(AbstractRoute):
 	def init(self) -> None:
-		self.base_path = "/config"
+		self.base_path = "/api/config"
 		self.routes = (
-			Route(f"{self.base_path}/reload", self.reload, methods=("POST",)),
+			APIRoute(f"{self.base_path}/reload", self.reload, methods=("POST",)),
 		)
 
 	async def reload(self, request: Request) -> JSONResponse:

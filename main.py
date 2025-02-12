@@ -1,6 +1,7 @@
 from typing import Type
 
 import fastapi
+from fastapi.templating import Jinja2Templates
 import uvicorn
 from fastapi.staticfiles import StaticFiles
 
@@ -12,13 +13,15 @@ from config import Config
 app = fastapi.FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+templates = Jinja2Templates(directory="templates")
+
 config = Config("config.json")
 config.read()
 
 
 for route_name in routes.__all__:
 	route_cls: Type[AbstractRoute] = getattr(routes, route_name)
-	route = route_cls(app, config)
+	route = route_cls(app, templates, config)
 
 
 @app.route("/")
