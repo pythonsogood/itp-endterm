@@ -76,22 +76,22 @@ Reports routes are:
 
 ### Core Classes and Attributes
 
-- [x] [Student](/models/student.py)
+- [x] [Student](/models/student.py#L4)
 - [x] [Course](/models/course.py)
-- [x] [School](/config/school.py)
-- [x] [GraduateStudent (Inheritance)](/models/student.py)
+- [x] [School](/config/school.py#L6)
+- [x] [GraduateStudent (Inheritance)](/models/student.py#L26)
 
 ### Improved Functionality Section
 - [x] [Student Management](/routes/student_route.py)
 - [x] [Course Enrollment and Management](/routes/course_route.py)
-- [x] [Search](/routes/student_route.py) and [Reporting](/routes/report_route.py)
+- [x] [Search](/routes/student_route.py#L38) and [Reporting](/routes/report_route.py)
 - [x] [User Data Persistence](/config/config.py)
 - [x] [Error Handling](/util/errors.py)
-- [ ] [Extensibility via Inheritance](/models/student.py) (?)
+- [x] [Extensibility via Inheritance](/models/student.py#L26)
 
 ### Improved User Scenario Section
 - [x] [Student Enrollment and Record Management](/routes/student_route.py)
 - [x] [Course Registration and Enrollment](/routes/course_route.py)
-- [x] [Grade Input](/routes/student_route.py) and [Analysis](/routes/report_route.py)
-- [x] [Search and Retrieval](/routes/student_route.py)
+- [x] [Grade Input](/routes/student_route.py#L92) and [Analysis](/routes/report_route.py)
+- [x] [Search and Retrieval](/routes/student_route.py#L49)
 - [x] [Reporting and Analytics](/routes/report_route.py)
