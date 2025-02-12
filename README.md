@@ -2,6 +2,8 @@
 
 python ItP endterm project
 
+> Built with [FastAPI](https://github.com/fastapi)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/license/mit/)
 
 
@@ -52,15 +54,19 @@ python main.py
 ```
 
 Server opens on http://localhost:8000
-API Endpoints can be checked via [Swagger-UI](https://github.com/swagger-api/swagger-ui) on [/docs](http://localhost:8000/docs)
+
+API Endpoints can be checked on [/docs](http://localhost:8000/docs) page via [Swagger-UI](https://github.com/swagger-api/swagger-ui)
+
+Reports routes are:
+* [/report/students](http://localhost:8000/report/students)
+* [/report/student/{student_id}/grades](http://localhost:8000/report/student/{student_id}/grades)
+* [/report/course/{course_id}/grades](http://localhost:8000/report/course/{course_id}/grades)
 
 ## Requirements
 
-* OS: Windows 10 or greater
+* Python: `3.12`, `3.13`[^1]
 
-* Python: 3.12[^1]
-
-[^1]: Tested on Python 3.12 and 3.13, but should work on 3.10+
+[^1]: Tested on Python `3.12` and `3.13`, but *should work* on `3.10`+
 
 ## Dependencies
 

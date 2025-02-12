@@ -2,13 +2,13 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
 import fastapi
-from errors import NotFoundException
 from fastapi.datastructures import Default
 from fastapi.templating import Jinja2Templates
 
 from config import Config
 from models.course import Course
 from models.student import Student
+from util.errors import NotFoundException
 
 
 @dataclass()
