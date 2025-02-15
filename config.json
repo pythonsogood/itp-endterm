@@ -5,7 +5,17 @@
         "student_id": 1,
         "name": "Ivan",
         "age": 16,
-        "grades": {}
+        "grades": {
+          "1": [
+            5,
+            4,
+            3,
+            5,
+            4,
+            4,
+            5
+          ]
+        }
       },
       "2": {
         "student_id": 2,
