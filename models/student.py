@@ -9,7 +9,8 @@ class Student(pydantic.BaseModel):
 
 	def calculate_course_average_grades(self, course_id: int) -> float:
 		try:
-			return sum(self.grades[course_id]) / len(self.grades[course_id])
+			grades = self.grades.get(course_id, [])
+			return sum(grades) / len(grades)
 		except ZeroDivisionError:
 			return 0.0
 
